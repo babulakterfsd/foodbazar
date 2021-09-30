@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Card, Button, Container, Row, Col } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { Card, Button, Container, Row } from "react-bootstrap";
+import { useParams, useHistory } from "react-router-dom";
 
 const SingleFood = (props) => {
   const { idMeal } = useParams();
@@ -13,6 +13,12 @@ const SingleFood = (props) => {
   }, [idMeal]);
 
   const { strMealThumb, strMeal, strInstructions } = foodDetail;
+
+  const history = useHistory();
+
+  const handleGoBack = () => {
+    history.push("/Restaurant");
+  };
 
   return (
     <Container className="py-2 py-md-5">
@@ -34,23 +40,15 @@ const SingleFood = (props) => {
               <Card.Title className="text-success">{strMeal}</Card.Title>
               <p className="text-secondary">{strInstructions}</p>
             </Card.Body>
+            <Card.Footer className="d-flex justify-content-center">
+              <Button onClick={handleGoBack} variant="success">
+                Back to Restaurant
+              </Button>
+            </Card.Footer>
           </Card>
         </div>
       </Row>
     </Container>
-    // <Container className="py-5 text-success d-flex justify-content-center">
-    //   <Row xs={1} md={2} lg={4}>
-    //     <Col>
-    //       <Card>
-    //         <Card.Img variant="top" src={strMealThumb} />
-    //         <Card.Body>
-    //           <Card.Title>{strMeal}</Card.Title>
-    //           <h6>{strInstructions.slice(0, 250)}</h6>
-    //         </Card.Body>
-    //       </Card>
-    //     </Col>
-    //   </Row>
-    // </Container>
   );
 };
 

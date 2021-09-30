@@ -7,7 +7,7 @@ const Meals = ({ meal }) => {
 
   return (
     <div className="container-fluid">
-      <Card>
+      <Card className="text-center">
         <Card.Img variant="top" src={strMealThumb} />
         <Card.Body>
           <Card.Title>{strMeal}</Card.Title>
